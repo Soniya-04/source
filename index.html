@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Portfolio</title>
+
+    <!-- Internal CSS -->
+    <style>
+       /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-image: url('https://i.pinimg.com/originals/e4/dd/82/e4dd8216eec36975088437f912974ceb.jpg'); /* Replace with your sky image URL */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center center; /* Centers the image */
+    color: #333;
+}
+
+/* Header */
+header {
+    background-image: url('https://th.bing.com/th/id/OIP.evPSPoKdtleNIIOUjgphBAHaE7?rs=1&pid=ImgDetMain'); /* Replace with your sky image URL */
+    background-size: cover;
+    background-color: rgba(11, 20, 151, 0.7);
+    padding: 1rem;
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: rgb(248, 233, 233);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem;
+    font-size: 1.1rem; /* Slightly increased font size for links */
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+}
+
+
+
+ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+ul li img {
+    max-width: 50px; /* Adjust the image size */
+    height: auto;
+    margin-right: 15px; /* Space between the icon and text */
+}
+
+ul li strong {
+    font-size: 1.3rem; /* Increased font size for the text next to the icon */
+    color: #333; /* Ensure the text is visible */
+}
+
+
+/* General Container */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Section Styling */
+section {
+    width: 70%; /* Reduces the width to 70% of the parent container */
+    max-width: 1200px; /* Optional: Limits the width to 1200px */
+    padding: 2rem 0;
+    background-color: rgba(156, 183, 214, 0.8);
+    margin: 1.6rem auto; /* Centers the section horizontally */
+    border-radius: 8px;
+}
+
+/* Heading Styling - Slight Increase in Font Size */
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    font-size: 2.0rem; /* Uniform font size for all headings */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Optional: If you want to fine-tune specific headings */
+h1 {
+    font-size: 1.8rem; /* Same size as others */
+}
+
+h2 {
+    font-size: 1.8rem; /* Same size as others */
+}
+
+h3 {
+    font-size: 1.6rem; /* Same size as others */
+}
+
+
+h1:hover, h2:hover, h3:hover {
+    color: #ffd700; /* Gold color when hovered */
+    transform: translateY(-5px); /* Slightly lift the heading on hover */
+}
+
+/* Paragraph Styling - Slight Increase in Font Size */
+p {
+    font-size: 1.2rem; /* Slightly increased font size for paragraphs */
+    color: #555;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    background-image: url('https://th.bing.com/th/id/OIP.evPSPoKdtleNIIOUjgphBAHaE7?rs=1&pid=ImgDetMain');
+    background-size: cover;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    margin-top: 1rem;
+    border-radius: 25px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e2d37e;
+    transform: translateY(-2px);
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-image: url('https://th.bing.com/th/id/OIP.evPSPoKdtleNIIOUjgphBAHaE7?rs=1&pid=ImgDetMain');
+    background-size: cover;
+    background-color: #333;
+    color: white;
+    font-size: 0.8rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(194, 191, 191, 0.5);
+    padding-top: 50px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hidden-section {
+    display: none;
+}
+
+img {
+    max-width: 75px;
+    height: auto;
+    margin-right: 25px;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education" class="hidden-section">Education</a></li>
+                <li><a href="#skills" class="hidden-section">Skills</a></li>
+                <li><a href="#internships" class="hidden-section">Internships</a></li>
+                <li><a href="#projects" class="hidden-section">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Hello! I am SONIYA G, a passionate student of Bachelor of engineering. This portfolio showcases my academic journey, skills, projects, and more. Feel free to explore!</p>
+            <a href="javascript:void(0);" id="readMoreAbout" class="btn">Read More</a>
+        </div>
+    </section>
+
+<!-- Modal for Registration Form -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Register</h2>
+        <form id="registrationForm" autocomplete="off">
+            <label for="fullName">Full Name:</label><br>
+            <input type="text" id="fullName" name="fullName" required><br><br>
+
+            <label for="phone">Phone:</label><br>
+            <input type="tel" id="phone" name="phone" required pattern="[6-9]{1}[0-9]{9}" title="Please enter a valid 10-digit Indian phone number starting with 6-9"><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required placeholder="example@gmail.com" pattern="[a-zA-Z0-9._%+-]+@gmail\.com" title="Please enter a valid Gmail address"><br><br>
+
+            <input type="submit" value="Submit" class="btn">
+        </form>
+    </div>
+</div>
+
+    <!-- Education Section -->
+    <section id="education" class="hidden-section">
+        <div class="container">
+            <h2>Education</h2>
+            <ul>
+                <li>
+                    <h3><img src="https://th.bing.com/th/id/OIP.avYSvcTmd34yQ3yAY6RdnQHaKZ?rs=1&pid=ImgDetMain" alt="VTU University">AIT</h3>
+                   
+                    <p>Bachelor of Engineering, 2021 - Present</p>
+                    <p>Stream:ECE</p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h3>HES</h3>
+                    <p>High School SSLC, 2018</p>
+                    <p>Relevant Subjects: PCMB, K, H, SS</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="hidden-section">
+        <div class="container">
+            <h2>Skills</h2>
+            <ul>
+                <li><img src="https://cdn0.iconfinder.com/data/icons/social-network-7/50/22-1024.png" alt="HTML"><strong>HTML</strong></li>
+                <li><img src="https://static.vecteezy.com/system/resources/previews/012/697/301/original/3d-css-icon-design-free-png.png" alt="CSS"><strong>CSS</strong> </li>
+                <li><img src="https://www.teci.ai/wp-content/uploads/2023/02/JavaScript-Logo-800x500.png" alt="JavaScript"><strong>JavaScript</strong></li>
+                <li><img src="https://pluspng.com/img-png/python-logo-png-open-2000.png" alt="Python"> <strong>Python</strong></li>
+            </ul>
+            <ul>
+                <li><img src="https://cte-wrs.org/wp-content/uploads/2023/11/Critical-Thinking-ProbleSolving-CircleSM-2-e1707091434289.png" alt="Problem Solving & Critical Thinking"><strong>Problem Solving & Critical Thinking</strong></li>
+                <li><img src="https://static.vecteezy.com/system/resources/previews/011/204/601/original/teamwork-and-collaboration-concept-with-different-female-hands-and-business-related-objects-businesswomen-in-communication-and-brainstorming-about-project-unity-hand-drawn-flat-illustration-vector.jpg"><strong>Team collaboration and communication</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Internships Section -->
+    <section id="internships" class="hidden-section">
+        <div class="container">
+            <h2>Internships</h2>
+            <div class="internship">
+                <h3>Internship 1: AIT</h3>
+                <p><strong>Course:</strong> Amazon Web services and Software development using Python, [1 month]</p>
+                <p><strong>Key Achievements: </strong> Certified in it</p>
+            </div>
+            <div class="internship">
+                <h3>Internship 2: Dlithe</h3>
+                <p><strong>Course:</strong> Python Full stack, [4 months]</p>
+                <p><strong>Key Achievements: </strong> Certified in it</p>
+            </div>
+            <div class="internship">
+                <h3>Internship 3: NPTEL</h3>
+                <p><strong>Course:</strong> Python for data science, [3 months]</p>
+                <p><strong>Key Achievements: </strong> Certified in it</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="hidden-section">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Project 1: Integrated Dam Automation</h3>
+                <p>This system utilizes a combination of sensors to monitor environmental and structural parameters, such as water levels, rainfall, turbidity, and temperature. Servo motors automate dam gate operations based on water levels, ensuring efficient water discharge during normal and flood conditions.</p>
+                <a href="file:///C:/Users/admin/Downloads/DAM%20Report%20final%20(2).pdf" target="_blank" class="btn">View Project</a>
+            </div>
+
+            <div class="project">
+                <h3>Project 2: Helmet Based Ignition and Alcohol Detection</h3>
+                <p>The systems scope includes the design and implementation of a robust and reliable helmet detection mechanism using IR sensors and an alcohol detection system employing alcohol sensors.</p>
+                <a href="file:///C:/Users/admin/Downloads/helemt%20(1).pdf" target="_blank" class="btn">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>If you'd like to get in touch with me, feel free to send me an email </p>
+            <ul>
+                <img src="https://play-lh.googleusercontent.com/jdfjniOVoMjAi7hhwn4HwtgaiDlf9QRuiOdCjFlmegGyj1F4xCftDYDZFmRWN5ZYg-A" alt="Email"></li>
+                <p>Email: <a href="mailto:soniyagunduraj04@gmail.com">soniyagunduraj04@gmail.com</a></p>
+                
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 G. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+    
+        // Get the button that opens the modal
+        var btn = document.getElementById("readMoreAbout");
+    
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+    
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+            // Hide the Read More button after it's clicked
+            btn.style.display = "none";
+        }
+    
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+            // Show the Read More button again if the modal is closed
+            btn.style.display = "inline-block";
+        }
+    
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                // Show the Read More button again if the modal is closed
+                btn.style.display = "inline-block";
+            }
+        }
+    
+        // Handle form submission
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+    
+            // Get form data
+            var fullName = document.getElementById('fullName').value;
+            var phone = document.getElementById('phone').value;
+            var email = document.getElementById('email').value;
+    
+            // Validate email
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            if (!email.match(emailPattern)) {
+                alert('Please enter a valid Gmail address (e.g., example@gmail.com)');
+                return; // Stop the form submission
+            }
+    
+            // Validate phone number (Indian phone number validation)
+            var phonePattern = /^[6-9][0-9]{9}$/;
+            if (!phone.match(phonePattern)) {
+                alert('Please enter a valid 10-digit Indian phone number starting with 6, 7, 8, or 9');
+                return; // Stop the form submission
+            }
+    
+            // Display the form data (you can replace this with further action, like sending the data to a server)
+            alert('Form submitted!\nFull Name: ' + fullName + '\nPhone: ' + phone + '\nEmail: ' + email);
+    
+            // Hide the modal
+            modal.style.display = 'none';
+    
+            // Show all hidden sections
+            var hiddenSections = document.querySelectorAll('.hidden-section');
+            hiddenSections.forEach(function(section) {
+                section.style.display = 'block';
+            });
+    
+           
+    
+            // You can also redirect to another page or display a success message here
+        });
+    </script>
+    
+</body>
+</html>
